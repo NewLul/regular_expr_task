@@ -23,7 +23,7 @@ TEST(regexpr, sum) {
     b.prefix[0] = 0;
     b.prefix[1] = 3;
     regular_expr result = sum(a, b, 2);
-    std::vector<int> test = {0, 2};
+    std::vector<size_t> test = {0, 2};
     ASSERT_EQ(result.prefix, test);
     ASSERT_EQ(result.whole, b.whole);
 }
@@ -39,8 +39,8 @@ TEST(regexpr, concat) {
     b.prefix[0] = 0;
     b.prefix[1] = 3;
     regular_expr result = concat(a, b, 2);
-    std::vector<int> test_prefix = {0, 2};
-    std::vector<int> test_whole = {0, 1};
+    std::vector<size_t> test_prefix = {0, 2};
+    std::vector<size_t> test_whole = {0, 1};
     ASSERT_EQ(result.prefix, test_prefix);
     ASSERT_EQ(result.whole, test_whole);
 }
@@ -51,8 +51,8 @@ TEST(regexpr, clini) {
     a.prefix[1] = 2;
     a.whole[2] = 2;
     regular_expr result = clini(a, 5);
-    std::vector<int> test_prefix = {0, 2, 2, 4, 4};
-    std::vector<int> test_whole = {0, -1, 2, -1, 4};
+    std::vector<size_t> test_prefix = {0, 2, 2, 4, 4};
+    std::vector<size_t> test_whole = {0, size_t_max, 2, size_t_max, 4};
     ASSERT_EQ(result.prefix, test_prefix);
     ASSERT_EQ(result.whole, test_whole);
 }
